@@ -26,7 +26,6 @@ import {
 } from "@/components/ui/sheet"
 
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Separator } from "@/components/ui/separator"
 
 import * as React from "react"
 import { Circle, LogOut, MoreHorizontal, Settings2, Stars, Users } from "lucide-react"
