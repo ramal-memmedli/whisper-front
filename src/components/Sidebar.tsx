@@ -59,7 +59,7 @@ function Sidebar({ openSidebar }: { openSidebar: boolean }) {
 
 
     return (
-        <div className={"transition flex flex-col sidebar duration-[150ms] w-[25rem] absolute left-0 top-0 bottom-0 p-4 dark:bg-black border-r border-r-white/10     " + (openSidebar ? "-translate-x-[25rem]" : "-translate-x-0")}>
+        <div className={"transition flex flex-col sidebar duration-500 w-[25rem] absolute left-0 top-0 bottom-0 p-4 dark:bg-black border-r border-r-white/10     " + (openSidebar ? "-translate-x-[25rem]" : "-translate-x-0")}>
 
             <div className="flex w-full flex-col items-start justify-between rounded-md border border-white/10 px-4 py-3 sm:flex-row sm:items-center mb-4">
 
