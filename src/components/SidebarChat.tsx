@@ -36,7 +36,7 @@ function SidebarChatContent({ username, image, imagePlaceholder, message, messag
                             {username === "Ilkin3169" ? <CheckCheck size={18} className="mr-1 text-blue-400"/> : null}
                             {message}
                         </p>
-                        {unreadMessageCount === 0 ? null : <Badge>{unreadMessageCount}</Badge>}
+                        {unreadMessageCount === 0 ? null : <Badge>{unreadMessageCount.toString()}</Badge>}
                     </div>
 
                 </div>
