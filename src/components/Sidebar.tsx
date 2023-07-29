@@ -59,9 +59,9 @@ function Sidebar({ openSidebar }: { openSidebar: boolean }) {
 
 
     return (
-        <div className={"transition flex flex-col sidebar duration-500 w-[25rem] absolute left-0 top-0 bottom-0 p-4 dark:bg-black border-r border-r-white/10     " + (openSidebar ? "-translate-x-[25rem]" : "-translate-x-0")}>
+        <div className={"transition flex flex-col sidebar duration-500 w-[25rem] absolute left-0 top-0 bottom-0 p-4 dark:bg-black border-r border-r-white/10 shadow-[inset_0_2rem_4rem_0_rgba(255,255,255,.04)]     " + (openSidebar ? "-translate-x-[25rem]" : "-translate-x-0")}>
 
-            <div className="flex w-full flex-col items-start justify-between rounded-md border border-white/10 px-4 py-3 sm:flex-row sm:items-center mb-4">
+            <div className="flex w-full flex-col items-start justify-between rounded-md border border-white/10 px-4 py-3 sm:flex-row sm:items-center mb-4 shadow-[inset_0_2rem_4rem_0_rgba(255,255,255,.04)]">
 
                 <div className="leading-none flex items-center">
                     <Sheet key={"left"}>
@@ -71,7 +71,7 @@ function Sidebar({ openSidebar }: { openSidebar: boolean }) {
                                 <AvatarFallback className="dark:text-neutral-200">MR</AvatarFallback>
                             </Avatar>
                         </SheetTrigger>
-                        <SheetContent side={"left"} className="dark:border-r-white/10">
+                        <SheetContent side={"left"} className="dark:border-r-white/10 shadow-[inset_0_2rem_4rem_0_rgba(255,255,255,.04)]">
                             <SheetHeader>
                                 <SheetTitle>Ramal Məmmədli</SheetTitle>
                                 <SheetDescription>
@@ -146,7 +146,7 @@ function Sidebar({ openSidebar }: { openSidebar: boolean }) {
             </div>
 
 
-            <ScrollArea className="rounded-md border h-full border-white/10">
+            <ScrollArea className="rounded-md border h-full border-white/10 shadow-[inset_0_2rem_4rem_0_rgba(255,255,255,.04)]">
                 <SidebarChat/>
                 <SidebarChat/>
                 <SidebarChat/>
