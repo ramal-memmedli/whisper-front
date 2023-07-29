@@ -25,6 +25,8 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Separator } from "@/components/ui/separator"
 
 import * as React from "react"
 import { Circle, LogOut, MoreHorizontal, Settings2, Stars, Users } from "lucide-react"
@@ -42,6 +44,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import { Badge } from "@/components/ui/badge"
+import SidebarChat from "./SidebarChat"
 
 const labels = [
     "Online",
@@ -59,7 +62,7 @@ function Sidebar({ openSidebar }: { openSidebar: boolean }) {
     return (
         <div className={"transition flex flex-col sidebar duration-[150ms] w-[25rem] absolute left-0 top-0 bottom-0 p-4 dark:bg-black border-r border-r-white/10     " + (openSidebar ? "-translate-x-[25rem]" : "-translate-x-0")}>
 
-            <div className="flex w-full flex-col items-start justify-between rounded-md border border-white/10 px-4 py-3 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col items-start justify-between rounded-md border border-white/10 px-4 py-3 sm:flex-row sm:items-center mb-4">
 
                 <div className="leading-none flex items-center">
                     <Sheet key={"left"}>
@@ -144,7 +147,31 @@ function Sidebar({ openSidebar }: { openSidebar: boolean }) {
             </div>
 
 
-
+            <ScrollArea className="rounded-md border h-full border-white/10">
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <SidebarChat/>
+                <p className="text-sm text-muted-foreground dark:text-white/40 text-center my-4">Total 14 chats. All messages end-to-end encrypted.</p>
+            </ScrollArea>
 
 
         </div>
