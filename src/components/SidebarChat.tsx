@@ -1,13 +1,8 @@
 import {
     ContextMenu,
-    ContextMenuCheckboxItem,
     ContextMenuContent,
     ContextMenuItem,
-    ContextMenuLabel,
-    ContextMenuRadioGroup,
-    ContextMenuRadioItem,
     ContextMenuSeparator,
-    ContextMenuShortcut,
     ContextMenuSub,
     ContextMenuSubContent,
     ContextMenuSubTrigger,
@@ -17,29 +12,31 @@ import { Avatar } from "@radix-ui/react-avatar"
 import { AvatarFallback, AvatarImage } from "./ui/avatar"
 import { Separator } from "./ui/separator"
 import { Badge } from "./ui/badge"
+import { CheckCheck, LogOut } from "lucide-react"
 
-function SidebarChatContent() {
+function SidebarChatContent({ username, image, imagePlaceholder, message, messageDate, unreadMessageCount }: { username: string, image: string, imagePlaceholder: string, message: string, messageDate: Date, unreadMessageCount: Number }) {
     return (
-        <a href="#" className="flex justify-between items-center h-full w-full px-2">
+        <a href="#" className="flex justify-between items-center h-full w-full px-4">
             <div className="flex items-center w-full">
                 <Avatar className="h-11 w-11 cursor-pointer mr-4">
-                    <AvatarImage src="/avatars/01.png" alt="@shadcn" />
-                    <AvatarFallback className="dark:text-neutral-200">MR</AvatarFallback>
+                    <AvatarImage className="rounded-full" src={image} alt="@shadcn" />
+                    <AvatarFallback className="dark:text-neutral-200">{imagePlaceholder}</AvatarFallback>
                 </Avatar>
                 <div className="flex flex-col w-full flex-1 pr-2">
                     <div className="flex items-center justify-between">
                         <h4 className="flex-1 text-lg font-semibold tracking-tight dark:text-white/80 mr-2">
-                            Ceyhun
+                            {username}
                         </h4>
                         <p className="text-sm text-muted-foreground dark:text-white/40">
-                            10:09
+                            {messageDate.getHours() + ":" + messageDate.getMinutes()}
                         </p>
                     </div>
                     <div className="flex justify-between items-center">
-                        <p className="flex-1 text-base text-muted-foreground dark:text-white/40">
-                            Salam
+                        <p className="flex items-center flex-1 text-base text-muted-foreground dark:text-white/40">
+                            {username === "Ilkin3169" ? <CheckCheck size={18} className="mr-1 text-blue-400"/> : null}
+                            {message}
                         </p>
-                        <Badge>4</Badge>
+                        {unreadMessageCount === 0 ? null : <Badge>{unreadMessageCount}</Badge>}
                     </div>
 
                 </div>
@@ -49,55 +46,41 @@ function SidebarChatContent() {
 }
 
 
-function SidebarChat() {
+function SidebarChat({username, image, imagePlaceholder, message, messageDate, unreadMessageCount }: { username: string, image: string, imagePlaceholder: string, message: string, messageDate: Date, unreadMessageCount: Number }) {
     return (
         <ContextMenu>
             <ContextMenuTrigger className="transition-colors flex h-[4.5rem] items-center hover:bg-white/10 text-sm">
-                <SidebarChatContent />
+                <SidebarChatContent username={username} image={image} imagePlaceholder={imagePlaceholder} message={message} messageDate={messageDate} unreadMessageCount={unreadMessageCount} />
             </ContextMenuTrigger>
             <ContextMenuContent className="w-64">
-                <ContextMenuItem inset>
-                    Back
-                    <ContextMenuShortcut>⌘[</ContextMenuShortcut>
+                <h4 className="mx-3 my-2 flex-1 font-semibold tracking-tight dark:text-white/80 mr-2">
+                    {username}
+                </h4>
+                <ContextMenuItem>
+                    Mark as unread
                 </ContextMenuItem>
-                <ContextMenuItem inset disabled>
-                    Forward
-                    <ContextMenuShortcut>⌘]</ContextMenuShortcut>
-                </ContextMenuItem>
-                <ContextMenuItem inset>
-                    Reload
-                    <ContextMenuShortcut>⌘R</ContextMenuShortcut>
+                <ContextMenuItem>
+                    Pin chat
                 </ContextMenuItem>
                 <ContextMenuSub>
-                    <ContextMenuSubTrigger inset>More Tools</ContextMenuSubTrigger>
+                    <ContextMenuSubTrigger>User</ContextMenuSubTrigger>
                     <ContextMenuSubContent className="w-48">
-                        <ContextMenuItem>
-                            Save Page As...
-                            <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
-                        </ContextMenuItem>
-                        <ContextMenuItem>Create Shortcut...</ContextMenuItem>
-                        <ContextMenuItem>Name Window...</ContextMenuItem>
+                        <ContextMenuItem>Add to favorites</ContextMenuItem>
+                        <ContextMenuItem>Report</ContextMenuItem>
                         <ContextMenuSeparator />
-                        <ContextMenuItem>Developer Tools</ContextMenuItem>
+                        <ContextMenuItem className="text-red-600">
+                            <LogOut className="mr-2 h-4 w-4" />
+                            Block
+                        </ContextMenuItem>
                     </ContextMenuSubContent>
                 </ContextMenuSub>
                 <ContextMenuSeparator />
-                <ContextMenuCheckboxItem checked>
-                    Show Bookmarks Bar
-                    <ContextMenuShortcut>⌘⇧B</ContextMenuShortcut>
-                </ContextMenuCheckboxItem>
-                <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
-                <ContextMenuSeparator />
-                <ContextMenuRadioGroup value="pedro">
-                    <ContextMenuLabel inset>People</ContextMenuLabel>
-                    <ContextMenuSeparator />
-                    <ContextMenuRadioItem value="pedro">
-                        Pedro Duarte
-                    </ContextMenuRadioItem>
-                    <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
-                </ContextMenuRadioGroup>
+                <ContextMenuItem className="text-red-600">
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Delete chat
+                </ContextMenuItem>
             </ContextMenuContent>
-            <Separator className="ml-[4.25rem]" />
+            <Separator className="ml-[4.75rem]" />
         </ContextMenu>
     )
 }
