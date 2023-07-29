@@ -122,7 +122,7 @@ function Sidebar({ openSidebar }: { openSidebar: boolean }) {
                     <Sheet key={"left"}>
                         <SheetTrigger asChild>
                             <Avatar className="h-8 w-8 cursor-pointer">
-                                <AvatarImage src="/avatars/01.png" alt="@shadcn" />
+                                <AvatarImage src="https://picsum.photos/200" alt="@shadcn" />
                                 <AvatarFallback className="dark:text-neutral-200">MR</AvatarFallback>
                             </Avatar>
                         </SheetTrigger>
@@ -206,7 +206,7 @@ function Sidebar({ openSidebar }: { openSidebar: boolean }) {
 
                 {sidebarCards.map(function (data: SidebarChatCard) {
                     return (
-                        <SidebarChat id={data.id} username={data.username} image={data.image} imagePlaceholder={data.imagePlaceholder} message={data.message} messageDate={data.messageDate} unreadMessageCount={data.unreadMessageCount} />
+                        <SidebarChat key={data.id} username={data.username} image={data.image} imagePlaceholder={data.imagePlaceholder} message={data.message} messageDate={data.messageDate} unreadMessageCount={data.unreadMessageCount} />
                     )
                 })}
 
