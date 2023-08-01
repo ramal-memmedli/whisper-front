@@ -15,13 +15,6 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import {
-    Sheet,
-    SheetClose,
-    SheetContent,
-    SheetDescription,
-    SheetFooter,
-    SheetHeader,
-    SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
 
@@ -44,6 +37,7 @@ import {
 
 import { Badge } from "@/components/ui/badge"
 import SidebarChat from "./SidebarChat"
+import UserProfileSheet from "./UserProfileSheet"
 
 const labels = [
     "Online",
@@ -51,6 +45,24 @@ const labels = [
     "Away From Keyboard",
 ]
 
+
+type User = {
+    id: number;
+    username: string;
+    name: string;
+    surname: string;
+    email: string;
+    image: string;
+}
+
+const u_ramal: User = {
+    id: 99999,
+    username: "Ramal014",
+    name: "Ramal",
+    surname: "Memmedli",
+    email: "memmedliramal2002@gmail.com",
+    image: "https://picsum.photos/200"
+}
 
 
 type SidebarChatCard = {
@@ -119,27 +131,14 @@ function Sidebar({ openSidebar }: { openSidebar: boolean }) {
             <div className="flex w-full flex-col items-start justify-between rounded-md border border-white/10 px-4 py-3 sm:flex-row sm:items-center mb-4 shadow-[inset_0_2rem_4rem_0_rgba(255,255,255,.04)]">
 
                 <div className="leading-none flex items-center">
-                    <Sheet key={"left"}>
+                    <UserProfileSheet user={u_ramal} sheetTriggerContent={
                         <SheetTrigger asChild>
                             <Avatar className="h-8 w-8 cursor-pointer">
-                                <AvatarImage src="https://picsum.photos/200" alt="@shadcn" />
+                                <AvatarImage src={u_ramal.image} alt="@shadcn" />
                                 <AvatarFallback className="dark:text-neutral-200">MR</AvatarFallback>
                             </Avatar>
                         </SheetTrigger>
-                        <SheetContent side={"left"} className="dark:border-r-white/10 shadow-[inset_0_2rem_4rem_0_rgba(255,255,255,.04)]">
-                            <SheetHeader>
-                                <SheetTitle>Ramal Məmmədli</SheetTitle>
-                                <SheetDescription>
-                                    memmedliramal2002@gmail.com
-                                </SheetDescription>
-                            </SheetHeader>
-                            <SheetFooter>
-                                <SheetClose asChild>
-                                    <Button type="submit">Save changes</Button>
-                                </SheetClose>
-                            </SheetFooter>
-                        </SheetContent>
-                    </Sheet>
+                    }/>
                     <Badge className="ml-4" variant="outline">{label}</Badge>
                 </div>
                 <DropdownMenu open={open} onOpenChange={setOpen}>

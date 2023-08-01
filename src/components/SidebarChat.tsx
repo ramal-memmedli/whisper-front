@@ -80,7 +80,7 @@ function SidebarChat({username, image, imagePlaceholder, message, messageDate, u
                     Delete chat
                 </ContextMenuItem>
             </ContextMenuContent>
-            <Separator className="ml-[4.75rem]" />
+            <Separator className="ml-[4.75rem] w-auto" />
         </ContextMenu>
     )
 }
