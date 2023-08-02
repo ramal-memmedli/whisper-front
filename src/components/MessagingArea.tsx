@@ -34,7 +34,7 @@ function MessagingArea({ openSidebar, setOpenSidebar }: { openSidebar: boolean, 
                 <Button onClick={() => { setOpenSidebar(!openSidebar) }} variant="outline" className="mr-4 w-16 h-16 flex items-center justify-center">
                     <ChevronLast className="text-white cursor-pointer"></ChevronLast>
                 </Button>
-                <div className="flex w-full flex-col items-start justify-between rounded-md border border-white/10 px-4 py-3 sm:flex-row sm:items-center shadow-[inset_0_2rem_4rem_0_rgba(255,255,255,.04)]">
+                <div className="flex w-full flex-col items-start justify-between rounded-md border border-white/10 px-4 py-3 sm:flex-row sm:items-center">
 
                     <div className="leading-none flex items-center">
                         <UserProfileSheet user={u_ceyhun} sheetTriggerContent={

@@ -14,7 +14,7 @@ function UserProfileSheet({ user, sheetTriggerContent }: { user: User, sheetTrig
     return (
         <Sheet key={user.id}>
             {sheetTriggerContent}
-            <SheetContent side={"left"} className="dark:border-r-white/10 shadow-[inset_0_2rem_4rem_0_rgba(255,255,255,.04)]">
+            <SheetContent side={"left"} className="dark:border-r-white/10">
                 <SheetHeader>
                     <SheetTitle>{user.name + " " + user.surname}</SheetTitle>
                     <SheetDescription>{user.email}</SheetDescription>
