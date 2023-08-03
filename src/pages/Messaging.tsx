@@ -1,11 +1,7 @@
 import { ChevronLast, LogOut, MoreHorizontal, Settings2, Stars, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { SheetTrigger } from "@/components/ui/sheet"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import React from "react"
-import UserProfileSheet from "@/components/UserProfileSheet"
 import MessagingAreaHeaderUser from "@/components/MessagingPage/MessagingAreaHeaderUser"
 
 
