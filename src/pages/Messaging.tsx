@@ -1,4 +1,4 @@
-import { ChevronLast, LogOut, MoreHorizontal, Settings2, Stars, Users } from "lucide-react"
+import { ChevronRight, LogOut, MoreHorizontal, Settings2, Stars, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import React from "react"
@@ -29,9 +29,10 @@ function Messaging({ openSidebar, setOpenSidebar }: { openSidebar: boolean, setO
     return (
         <div className={"duration-500 w-full min-w-[50rem] flex flex-col py-4 pr-4 " + (openSidebar ? "ml-0" : "ml-[25rem]")}>
             <div className="messaging-area-header flex items-center">
-                <Button onClick={() => { setOpenSidebar(!openSidebar) }} variant="outline" className="mr-4 w-16 h-16 flex items-center justify-center">
-                    <ChevronLast className="text-white cursor-pointer"></ChevronLast>
-                </Button>
+                <a onClick={() => { setOpenSidebar(!openSidebar) }} className="transition cursor-pointer hover:bg-white/10 hover:border-transparent rounded-md border p-0 text-white border-white/10 mx-4 w-16 h-16 flex items-center justify-center ">
+                    <ChevronRight size={openSidebar ? 24 : 32} className={"transition duration-500  "  + (openSidebar ? "translate-x-2.5" : "translate-x-1.5 rotate-180")}></ChevronRight>
+                    <ChevronRight size={openSidebar ? 32 : 24} className={"transition duration-500  "  + (openSidebar ? "-translate-x-1.5" : "-translate-x-2.5 rotate-180")}></ChevronRight>
+                </a>
                 <MessagingAreaHeader />
             </div>
         </div>
@@ -42,7 +43,7 @@ function MessagingAreaHeader() {
     const [open, setOpen] = React.useState(false)
     return (
 
-        <div className="flex w-full flex-col items-start justify-between rounded-md border border-white/10 px-4 py-3 sm:flex-row sm:items-center">
+        <div className="flex flex-1 flex-col items-start justify-between rounded-md border border-white/10 px-4 py-3 sm:h-16 sm:flex-row sm:items-center">
             <MessagingAreaHeaderUser user={u_ceyhun}/>
 
             <DropdownMenu open={open} onOpenChange={setOpen}>

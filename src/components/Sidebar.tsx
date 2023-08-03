@@ -128,7 +128,7 @@ function Sidebar({ openSidebar }: { openSidebar: boolean }) {
     return (
         <div className={"transition flex flex-col sidebar duration-500 w-[25rem] absolute left-0 top-0 bottom-0 p-4 dark:bg-black border-r border-r-white/10     " + (openSidebar ? "-translate-x-[25rem]" : "-translate-x-0")}>
 
-            <div className="flex w-full flex-col items-start justify-between rounded-md border border-white/10 px-4 py-3 sm:flex-row sm:items-center mb-4 ">
+            <div className="flex w-full flex-col items-start justify-between rounded-md border border-white/10 px-4 py-3 sm:h-16 sm:flex-row sm:items-center mb-4 ">
 
                 <div className="leading-none flex items-center">
                     <UserProfileSheet user={u_ramal} sheetTriggerContent={
@@ -200,7 +200,7 @@ function Sidebar({ openSidebar }: { openSidebar: boolean }) {
             </div>
 
 
-            <ScrollArea className="rounded-md border h-full border-white/10 ">
+            <ScrollArea className="flex-1 rounded-md border border-white/10 ">
 
 
                 {sidebarCards.map(function (data: SidebarChatCard) {
