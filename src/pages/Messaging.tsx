@@ -1,8 +1,11 @@
-import { ChevronRight, LogOut, MoreHorizontal, Settings2, Stars, Users } from "lucide-react"
+import { LogOut, MoreHorizontal, Settings2, Stars, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import React from "react"
 import MessagingAreaHeaderUser from "@/components/MessagingPage/MessagingAreaHeaderUser"
+import MessagingAreaMessagesSection from "@/components/MessagingPage/MessagingAreaMessagesSection"
+import OpenCloseSidebarButton from "@/components/MessagingPage/OpenCloseSidebarButton"
+import MessagingAreaFooter from "@/components/MessagingPage/MessagingAreaFooter"
 
 
 type User = {
@@ -12,6 +15,7 @@ type User = {
     surname: string;
     email: string;
     image: string;
+    status: string;
   }
 
 const u_ceyhun: User = {
@@ -20,20 +24,24 @@ const u_ceyhun: User = {
     name: "Ceyhun",
     surname: "Memizade",
     email: "ceyhun3169@gmail.com",
-    image: "https://picsum.photos/200"
+    image: "https://picsum.photos/200",
+    status: "online"
 }
 
-function Messaging({ openSidebar, setOpenSidebar }: { openSidebar: boolean, setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>> }) {
+function Messaging({ openSidebar, setOpenSidebar, chatScreen }: { openSidebar: boolean, setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>, chatScreen: string }) {
 
 
     return (
-        <div className={"duration-500 w-full min-w-[50rem] flex flex-col py-4 pr-4 " + (openSidebar ? "ml-0" : "ml-[25rem]")}>
-            <div className="messaging-area-header flex items-center">
-                <a onClick={() => { setOpenSidebar(!openSidebar) }} className="transition cursor-pointer hover:bg-white/10 hover:border-transparent rounded-md border p-0 text-white border-white/10 mx-4 w-16 h-16 flex items-center justify-center ">
-                    <ChevronRight size={openSidebar ? 24 : 32} className={"transition duration-500  "  + (openSidebar ? "translate-x-2.5" : "translate-x-1.5 rotate-180")}></ChevronRight>
-                    <ChevronRight size={openSidebar ? 32 : 24} className={"transition duration-500  "  + (openSidebar ? "-translate-x-1.5" : "-translate-x-2.5 rotate-180")}></ChevronRight>
-                </a>
+        <div className={"duration-500 w-full min-w-[50rem] flex flex-col p-4 " + (openSidebar ? "ml-0" : "ml-[25rem]")}>
+            <div className="messaging-area-header flex items-center gap-4 mb-4">
+                <OpenCloseSidebarButton openSidebar={openSidebar} setOpenSidebar={setOpenSidebar}/>
                 <MessagingAreaHeader />
+            </div>
+            <div className="messaging-area-body flex-1">
+                <MessagingAreaMessagesSection/>
+            </div>
+            <div className="messaging-area-footer">
+                <MessagingAreaFooter/>
             </div>
         </div>
     )

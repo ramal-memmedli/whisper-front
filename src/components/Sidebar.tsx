@@ -119,7 +119,7 @@ const sidebarCards: SidebarChatCard[] = [ceyhun, ilkin, ali, ramal];
 
 
 
-function Sidebar({ openSidebar }: { openSidebar: boolean }) {
+function Sidebar({ openSidebar, setChatScreen }: { openSidebar: boolean, setChatScreen: React.Dispatch<React.SetStateAction<string>> }) {
     const [label, setLabel] = React.useState("online")
     const [open, setOpen] = React.useState(false)
 
@@ -205,7 +205,7 @@ function Sidebar({ openSidebar }: { openSidebar: boolean }) {
 
                 {sidebarCards.map(function (data: SidebarChatCard) {
                     return (
-                        <SidebarChat key={data.id} username={data.username} image={data.image} imagePlaceholder={data.imagePlaceholder} message={data.message} messageDate={data.messageDate} unreadMessageCount={data.unreadMessageCount} />
+                        <SidebarChat setChatScreen={setChatScreen} key={data.id} username={data.username} image={data.image} imagePlaceholder={data.imagePlaceholder} message={data.message} messageDate={data.messageDate} unreadMessageCount={data.unreadMessageCount} />
                     )
                 })}
 
