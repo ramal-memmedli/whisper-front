@@ -1,129 +1,59 @@
+import * as React from "react"
+
+// User Interface
+
 import {
-    Avatar,
-    AvatarFallback,
-    AvatarImage,
+    Avatar, AvatarFallback, AvatarImage,
 } from "@/components/ui/avatar"
+
 import { Button } from "@/components/ui/button"
+
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuGroup,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
+    DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
 import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 
+import { Circle, LogOut, MoreHorizontal, Settings2, Stars, Users } from "lucide-react"
+
 import { ScrollArea } from "@/components/ui/scroll-area"
 
-import * as React from "react"
-import { Circle, LogOut, MoreHorizontal, Settings2, Stars, Users } from "lucide-react"
 import {
-    Command,
-    CommandEmpty,
-    CommandGroup,
-    CommandItem,
-    CommandList,
+    Command, CommandEmpty, CommandGroup, CommandItem, CommandList,
 } from "@/components/ui/command"
+
 import {
-    DropdownMenuSub,
-    DropdownMenuSubContent,
-    DropdownMenuSubTrigger,
+    DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger,
 } from "@/components/ui/dropdown-menu"
 
 import { Badge } from "@/components/ui/badge"
+
 import SidebarChat from "./SidebarChat"
+
 import UserProfileSheet from "./UserProfileSheet"
 
-const labels = [
-    "Online",
-    "Offline",
-    "Away From Keyboard",
-]
+// Models and ViewModels
 
+import sidebarCards from "@/TestDatas/SidebarChatCardTestData"
+import SidebarChatCardViewModel from "@/ViewModels/SidebarChatCardViewModel"
 
-type User = {
-    id: number;
-    username: string;
-    name: string;
-    surname: string;
-    email: string;
-    image: string;
-}
+// Temporary Imports
 
-const u_ramal: User = {
-    id: 99999,
-    username: "Ramal014",
-    name: "Ramal",
-    surname: "Memmedli",
-    email: "memmedliramal2002@gmail.com",
-    image: "https://picsum.photos/200"
-}
+import UserTestData from "@/TestDatas/UserTestData"
 
-
-type SidebarChatCard = {
-    id: number;
-    username: string;
-    image: string;
-    imagePlaceholder: string;
-    message: string;
-    messageDate: Date;
-    unreadMessageCount: number;
-};
-
-const ceyhun: SidebarChatCard = {
-    id: 1,
-    username: "Ceyhun3169",
-    image: "https://picsum.photos/200",
-    imagePlaceholder: "CM",
-    message: "Salam",
-    messageDate: new Date("2023-07-29T03:11:03"),
-    unreadMessageCount: 3
-}
-
-const ilkin: SidebarChatCard = {
-    id: 2,
-    username: "Ilkin3169",
-    image: "https://picsum.photos/200",
-    imagePlaceholder: "IQ",
-    message: "Salam",
-    messageDate: new Date("2023-07-29T03:11:03"),
-    unreadMessageCount: 0
-}
-
-const ali: SidebarChatCard = {
-    id: 3,
-    username: "Ali3169",
-    image: "https://picsum.photos/200",
-    imagePlaceholder: "AA",
-    message: "Salam",
-    messageDate: new Date("2023-07-29T03:11:03"),
-    unreadMessageCount: 1
-}
-
-const ramal: SidebarChatCard = {
-    id: 4,
-    username: "Ramal014",
-    image: "https://picsum.photos/200",
-    imagePlaceholder: "MR",
-    message: "Salam",
-    messageDate: new Date("2023-07-29T03:11:03"),
-    unreadMessageCount: 2
-}
-
-const sidebarCards: SidebarChatCard[] = [ceyhun, ilkin, ali, ramal];
-
-
+// -------------------------------------------------------------------------------------------------------
 
 function Sidebar({ openSidebar, setChatScreen }: { openSidebar: boolean, setChatScreen: React.Dispatch<React.SetStateAction<string>> }) {
     const [label, setLabel] = React.useState("online")
     const [open, setOpen] = React.useState(false)
 
-
+    const labels = [
+        "Online",
+        "Offline",
+        "Away From Keyboard",
+    ]
 
     return (
         <div className={"transition flex flex-col sidebar duration-500 w-[25rem] absolute left-0 top-0 bottom-0 p-4 dark:bg-black border-r border-r-white/10     " + (openSidebar ? "-translate-x-[25rem]" : "-translate-x-0")}>
@@ -131,14 +61,14 @@ function Sidebar({ openSidebar, setChatScreen }: { openSidebar: boolean, setChat
             <div className="flex w-full flex-col items-start justify-between rounded-md border border-white/10 px-4 py-3 sm:h-16 sm:flex-row sm:items-center mb-4 ">
 
                 <div className="leading-none flex items-center">
-                    <UserProfileSheet user={u_ramal} sheetTriggerContent={
+                    <UserProfileSheet user={UserTestData} sheetTriggerContent={
                         <SheetTrigger asChild>
                             <Avatar className="h-8 w-8 cursor-pointer">
-                                <AvatarImage src={u_ramal.image} alt="@shadcn" />
+                                <AvatarImage src={UserTestData.image} alt="@shadcn" />
                                 <AvatarFallback className="dark:text-neutral-200">MR</AvatarFallback>
                             </Avatar>
                         </SheetTrigger>
-                    }/>
+                    } />
                     <Badge className="ml-4" variant="outline">{label}</Badge>
                 </div>
                 <DropdownMenu open={open} onOpenChange={setOpen}>
@@ -203,7 +133,7 @@ function Sidebar({ openSidebar, setChatScreen }: { openSidebar: boolean, setChat
             <ScrollArea className="flex-1 rounded-md border border-white/10 ">
 
 
-                {sidebarCards.map(function (data: SidebarChatCard) {
+                {sidebarCards.map(function (data: SidebarChatCardViewModel) {
                     return (
                         <SidebarChat setChatScreen={setChatScreen} key={data.id} username={data.username} image={data.image} imagePlaceholder={data.imagePlaceholder} message={data.message} messageDate={data.messageDate} unreadMessageCount={data.unreadMessageCount} />
                     )

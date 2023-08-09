@@ -1,14 +1,6 @@
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from './ui/sheet'
 import { Button } from './ui/button'
-
-type User = {
-    id: number;
-    username: string;
-    name: string;
-    surname: string;
-    email: string;
-    image: string;
-}
+import User from '@/models/User'
 
 function UserProfileSheet({ user, sheetTriggerContent }: { user: User, sheetTriggerContent: React.ReactNode }) {
     return (

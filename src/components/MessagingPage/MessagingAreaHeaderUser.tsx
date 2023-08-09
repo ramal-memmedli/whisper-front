@@ -2,16 +2,7 @@ import UserProfileSheet from "../UserProfileSheet"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Badge } from "../ui/badge"
 import { SheetTrigger } from "../ui/sheet"
-
-type User = {
-  id: number;
-  username: string;
-  name: string;
-  surname: string;
-  email: string;
-  image: string;
-  status: string;
-}
+import User from "@/models/User"
 
 function MessagingAreaHeaderUser({ user }: { user: User }) {
   return (
