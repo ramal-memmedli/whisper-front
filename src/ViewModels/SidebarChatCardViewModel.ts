@@ -1,10 +1,10 @@
 type SidebarChatCardViewModel = {
     id: number;
     username: string;
-    image: string;
+    profileImage: string;
     imagePlaceholder: string;
-    message: string;
-    messageDate: Date;
+    lastMessage: string;
+    lastMessageDate: Date;
     unreadMessageCount: number;
 };
 

@@ -18,8 +18,6 @@ import {
 
 import { Circle, LogOut, MoreHorizontal, Settings2, Stars, Users } from "lucide-react"
 
-import { ScrollArea } from "@/components/ui/scroll-area"
-
 import {
     Command, CommandEmpty, CommandGroup, CommandItem, CommandList,
 } from "@/components/ui/command"
@@ -30,22 +28,28 @@ import {
 
 import { Badge } from "@/components/ui/badge"
 
-import SidebarChat from "./SidebarChat"
-
 import UserProfileSheet from "./UserProfileSheet"
 
 // Models and ViewModels
 
 import sidebarCards from "@/TestDatas/SidebarChatCardTestData"
-import SidebarChatCardViewModel from "@/ViewModels/SidebarChatCardViewModel"
 
 // Temporary Imports
 
 import UserTestData from "@/TestDatas/UserTestData"
+import SidebarChatsScrollableArea from "./SidebarChatsScrollableArea"
 
 // -------------------------------------------------------------------------------------------------------
 
-function Sidebar({ openSidebar, setChatScreen }: { openSidebar: boolean, setChatScreen: React.Dispatch<React.SetStateAction<string>> }) {
+function Sidebar({ openSidebar,
+                   chatScreen,
+                   setChatScreen
+                 }: { openSidebar: boolean,
+                      chatScreen: string,
+                      setChatScreen: React.Dispatch<React.SetStateAction<string>>
+                    }) {
+
+
     const [label, setLabel] = React.useState("online")
     const [open, setOpen] = React.useState(false)
 
@@ -58,7 +62,7 @@ function Sidebar({ openSidebar, setChatScreen }: { openSidebar: boolean, setChat
     return (
         <div className={"transition flex flex-col sidebar duration-500 w-[25rem] absolute left-0 top-0 bottom-0 p-4 dark:bg-black border-r border-r-white/10     " + (openSidebar ? "-translate-x-[25rem]" : "-translate-x-0")}>
 
-            <div className="flex w-full flex-col items-start justify-between rounded-md border border-white/10 px-4 py-3 sm:h-16 sm:flex-row sm:items-center mb-4 ">
+            {/* <div className="flex w-full flex-col items-start justify-between rounded-md border border-white/10 px-4 py-3 sm:h-16 sm:flex-row sm:items-center mb-4 ">
 
                 <div className="leading-none flex items-center">
                     <UserProfileSheet user={UserTestData} sheetTriggerContent={
@@ -127,21 +131,10 @@ function Sidebar({ openSidebar, setChatScreen }: { openSidebar: boolean, setChat
                         </DropdownMenuGroup>
                     </DropdownMenuContent>
                 </DropdownMenu>
-            </div>
+            </div> */}
 
 
-            <ScrollArea className="flex-1 rounded-md border border-white/10 ">
-
-
-                {sidebarCards.map(function (data: SidebarChatCardViewModel) {
-                    return (
-                        <SidebarChat setChatScreen={setChatScreen} key={data.id} username={data.username} image={data.image} imagePlaceholder={data.imagePlaceholder} message={data.message} messageDate={data.messageDate} unreadMessageCount={data.unreadMessageCount} />
-                    )
-                })}
-
-
-                <p className="text-sm text-muted-foreground dark:text-white/40 text-center my-4">Total {sidebarCards.length} chats. All messages end-to-end encrypted.</p>
-            </ScrollArea>
+            <SidebarChatsScrollableArea sidebarChatCards={sidebarCards} setChatScreen={setChatScreen} chatScreen={chatScreen}/>
 
 
         </div>

@@ -46,10 +46,12 @@ function SidebarChatContent({ username, image, imagePlaceholder, message, messag
 }
 
 
-function SidebarChat({username, image, imagePlaceholder, message, messageDate, unreadMessageCount, setChatScreen }: { username: string, image: string, imagePlaceholder: string, message: string, messageDate: Date, unreadMessageCount: Number, setChatScreen: React.Dispatch<React.SetStateAction<string>> }) {
+function SidebarChat({username, image, imagePlaceholder, message, messageDate, unreadMessageCount, setChatScreen, chatScreen }: { username: string, image: string, imagePlaceholder: string, message: string, messageDate: Date, unreadMessageCount: Number, setChatScreen: React.Dispatch<React.SetStateAction<string>>, chatScreen: string }) {
     return (
         <ContextMenu>
-            <ContextMenuTrigger onClick={() => {setChatScreen(username)}} className="transition-colors flex h-[4.5rem] items-center hover:bg-white/10 text-sm">
+            <ContextMenuTrigger onClick={() => {
+                setChatScreen(username)
+                console.log(chatScreen)}} className="transition-colors flex h-[4.5rem] items-center hover:bg-white/10 text-sm">
                 <SidebarChatContent username={username} image={image} imagePlaceholder={imagePlaceholder} message={message} messageDate={messageDate} unreadMessageCount={unreadMessageCount} />
             </ContextMenuTrigger>
             <ContextMenuContent className="w-64">

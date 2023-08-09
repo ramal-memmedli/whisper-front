@@ -8,7 +8,7 @@ function Layout() {
 
     return (
         <div className="relative flex w-screen h-screen overflow-hidden bg-white dark:bg-black">
-            <Sidebar openSidebar={openSidebar} setChatScreen={setChatScreen}/>
+            <Sidebar openSidebar={openSidebar} setChatScreen={setChatScreen} chatScreen={chatScreen}/>
             <Messaging openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} chatScreen={chatScreen} />
         </div>
     )
