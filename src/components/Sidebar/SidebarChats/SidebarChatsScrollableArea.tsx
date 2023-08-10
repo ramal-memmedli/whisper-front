@@ -1,6 +1,6 @@
-import { ScrollArea } from './ui/scroll-area'
+import { ScrollArea } from '../../ui/scroll-area'
 
-import SidebarChat from "./SidebarChat"
+import SidebarChat from "./SidebarChat/SidebarChat"
 
 // Models and ViewModels
 

@@ -9,9 +9,9 @@ import {
     ContextMenuTrigger,
 } from "@/components/ui/context-menu"
 import { Avatar } from "@radix-ui/react-avatar"
-import { AvatarFallback, AvatarImage } from "./ui/avatar"
-import { Separator } from "./ui/separator"
-import { Badge } from "./ui/badge"
+import { AvatarFallback, AvatarImage } from "../../../ui/avatar"
+import { Separator } from "../../../ui/separator"
+import { Badge } from "../../../ui/badge"
 import { CheckCheck, LogOut } from "lucide-react"
 
 function SidebarChatContent({ username, image, imagePlaceholder, message, messageDate, unreadMessageCount }: { username: string, image: string, imagePlaceholder: string, message: string, messageDate: Date, unreadMessageCount: Number }) {

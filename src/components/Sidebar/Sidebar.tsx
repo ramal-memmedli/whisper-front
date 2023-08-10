@@ -28,7 +28,7 @@ import {
 
 import { Badge } from "@/components/ui/badge"
 
-import UserProfileSheet from "./UserProfileSheet"
+import UserProfileSheet from "../UserProfileSheet"
 
 // Models and ViewModels
 
@@ -37,7 +37,7 @@ import sidebarCards from "@/TestDatas/SidebarChatCardTestData"
 // Temporary Imports
 
 import UserTestData from "@/TestDatas/UserTestData"
-import SidebarChatsScrollableArea from "./SidebarChatsScrollableArea"
+import SidebarChatsScrollableArea from "./SidebarChats/SidebarChatsScrollableArea"
 
 // -------------------------------------------------------------------------------------------------------
 
